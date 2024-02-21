@@ -1,0 +1,23 @@
+{
+  "name": "url-unshrtn",
+  "type": "module",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "bun run --hot ./src/index.js",
+    "dev:worker": "wrangler dev",
+    "dev:deno": "deno run -A --unstable-sloppy-imports ./src/index.js",
+    "preview": "bun run ./dist/app.js",
+    "css": "bun run css.js --watch",
+    "build": "pnpm run build:css && pnpm run build:app",
+    "build:app": "esbuild ./src/index.js --bundle --minify --format=esm --outfile=./dist/app.js",
+    "build:css": "bun run css.js",
+    "deploy:worker": "wrangler deploy --minify"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "cssnano": "^6.0.3"
+  }
+}
